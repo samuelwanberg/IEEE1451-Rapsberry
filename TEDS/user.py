@@ -16,7 +16,6 @@ class UserTransducerNameTeds:
         '''
         pass 
         
-
     def format(self):
         '''
              Define o formato de representação do Nome do usuario
@@ -68,8 +67,6 @@ class UserTransducerNameTeds:
     def checksum(self):
         hexcodes = self.tlv()
         
-        
-        
-
     def teds_format(self):
+        self.tlv()
         

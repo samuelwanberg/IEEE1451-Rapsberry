@@ -18,6 +18,7 @@ def convert_dec_to_bin(number, bits=0):
         return binary
 
 def  convert_bin_to_hex(binary, octet=1):
+    '''OK '''
 
     '''
       Use example: 
@@ -40,13 +41,22 @@ def  convert_bin_to_hex(binary, octet=1):
     else:
         rest = 0
 
-    binary = ("0" * rest ) + binary
-
-    hexcode = [ "{0:0>2X}".format( int(binary[i:i+8],2) )
-                    for i in range(0, len(binary) - 8, 8)]
+    binary =  "0" * rest  + binary
     
-    return hexcode
+    hexcode = []
+    
+    for i in range(0, len(binary), 4):
+        hexcode.append( "{0:0>1X}".format(int(binary[i:i+4], 2))  )
 
+    #return hexcode 
+
+    #hexcode = [ "{0:0>1X}".format( int(binary[i:i+4],2) )for i in range(0, len(binary) - 4, 4)]
+    _format = ""
+
+    for i in range(0, len(hexcode) ,2):
+        _format = _format + "".join(hexcode[i:i+2]) + " " 
+        
+    return _format
        
 def convert_dec_to_hex(number, oct=1):
 
