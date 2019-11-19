@@ -1,0 +1,30 @@
+from utils import *
+
+"""
+   Representation Class for UserTransducerNameTeds 
+   
+"""
+
+class UserTransducerNameTeds:
+
+    def __init__(self):
+
+        with 
+
+    def length(self):
+
+        '''
+            TEDS length é o numero total de octetos no bloco de construcao
+            dos teds + 2 octetos para o checksum 
+        '''
+
+    def teds_id(self):
+        '''
+            
+        '''
+        
+    def format(self):
+        
+    def TCN_Name(self):
+
+    def checksum(self):

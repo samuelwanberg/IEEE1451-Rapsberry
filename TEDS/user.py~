@@ -1,0 +1,18 @@
+from utils import *
+
+class UserTransducerNameTeds:
+
+
+    def __init__(self):
+
+
+    def length(self):
+        
+    def teds_id(self):
+        
+
+    def format(self):
+        
+    def TCN_Name(self):
+
+    def checksum(self):

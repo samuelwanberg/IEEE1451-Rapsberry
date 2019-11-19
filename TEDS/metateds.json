@@ -1,0 +1,39 @@
+{
+   "LENGTH": "",
+   "TEDSID": {
+      "Type": "03",
+      "Length": 4,
+      "Family": "00",
+      "Class": "01",
+      "Version": "01",
+      "TupleLength": "01"
+   },
+   "UUID": {
+      "Type": "04",
+      "Length": 10,
+      "Location": [
+         1,
+         145367,
+         0,
+         381218
+      ],
+      "Manufacturer": 0,
+      "Year": 2019,
+      "Time": 296120
+   },
+   "OHoldOff": {
+      "Type": "3F",
+      "Length": 4,
+      "Timeout": 0.5
+   },
+   "TestTime": {
+      "Type": "0C",
+      "Length": 4,
+      "Timeout": 0.5
+   },
+   "MaxChannel": {
+      "Type": "0C",
+      "Length": 2,
+      "NumberOfTransducerChannel": 1
+   }
+}

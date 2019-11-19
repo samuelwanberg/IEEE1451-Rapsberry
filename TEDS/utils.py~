@@ -1,0 +1,61 @@
+
+'''
+  Package for utils functions for example convert numbers etc..
+'''
+def convert_dec_to_bin(number, bits=0):
+    '''
+      Use example: 
+      convert_dec_to_bin(10,5)  => Result: 01010
+      convert_dec_to_hex(103,8) => Result:  01100111
+    '''
+    assert type(number) == int, "Number type don't int"
+
+    binary = bin(number)[2:]
+    
+    if len(binary) < bits:
+       rest = bits - len(binary) 
+       return  ("0" * rest) + binary
+    else:
+        return binary
+
+def  convert_bin_to_hex(binary, oct=1):
+
+    '''
+      Use example: 
+      convert_bin_to_hex(1011,2)  => Result: 0B
+      convert_bin_to_hex(100111,2) => Result:  
+    '''
+    assert type(binary) == str, "Binary type don't str"
+
+    verify = map( lambda b: False if not b in ["0","1"]
+                  else True, binary)
+    assert not False in list(veirfy), "Value of binary Number is incorrect "
+    
+    bits = 8 * oct
+
+    if len(binary) < bits:
+        rest = bits - binary
+    else:
+        rest = 0
+
+    binary = ("0" * rest ) + binary
+
+    for i in range(0, len(binary), 4):
+        b = binary[i: len(binary) - (i+4) ]
+    
+    
+       
+def convert_dec_to_hex(number, oct=1):
+
+    '''
+      Use example: 
+      convert_dec_to_hex(10,2)  => Result: 0A
+      convert_dec_to_hex(103,3) => Result:  067
+    '''
+    assert type(number) == int, "Number type don't int"
+    hexcode = "{" + "0:0>{}".format(oct) + "}"
+
+    return hexcode.format(number)
+
+def convert_float_to_hex():
+    pass
