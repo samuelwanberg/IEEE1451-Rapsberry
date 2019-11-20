@@ -44,15 +44,10 @@ def  convert_bin_to_hex(binary, octet=1):
     binary =  "0" * rest  + binary
     
     hexcode = []
-    
     for i in range(0, len(binary), 4):
         hexcode.append( "{0:0>1X}".format(int(binary[i:i+4], 2))  )
 
-    #return hexcode 
-
-    #hexcode = [ "{0:0>1X}".format( int(binary[i:i+4],2) )for i in range(0, len(binary) - 4, 4)]
     _format = ""
-
     for i in range(0, len(hexcode) ,2):
         _format = _format + "".join(hexcode[i:i+2]) + " " 
         
@@ -62,13 +57,15 @@ def convert_dec_to_hex(number, oct=1):
 
     '''
       Use example: 
-      convert_dec_to_hex(10,2)  => Result: 0A
-      convert_dec_to_hex(103,3) => Result:  067
+      convert_dec_to_hex(10,2)  => Result: 00 0A
+      convert_dec_to_hex(103,3) => Result: 00 00 67
+      Update  
     '''
     assert type(number) == int, "Number type don't int"
-    hexcode = "{" + "0:0>{}".format(oct) + "}"
+    hexcode = "{" + "0:0>{}X".format(2*oct) + "}"
+    hexcode = list(hexcode.format(number))
 
-    return hexcode.format(number)
+    return " ".join( [ "".join( hexcode[i:i+2] )  for i in range(0, len(hexcode), 2) ] ) 
 
 def convert_float_to_hex(number , oct=1):
     

@@ -27,9 +27,12 @@ class UserTransducerNameTeds:
 
 
     def TCN_Name(self):
-        type = "05"
-        length = " 07"
-        value = " 77 74 69 6d 2d 31 0A"
+        '''
+              wtim-1
+        '''
+        type = "05 "
+        length = "07 "
+        value = "77 74 69 6d 2d 31 0A"
         
         return type + length + value 
 
@@ -50,8 +53,8 @@ class UserTransducerNameTeds:
         
         return "{0} {1} {2} ".format(
             self.header(),
-            self.Format(),
-            self.cname(),
+            self.format(),
+            self.TCN_Name(),
         )
     
     def length(self):
@@ -62,11 +65,11 @@ class UserTransducerNameTeds:
         '''
         total_octet = self.tlv()
         length = len( total_octet.split() ) + 2  # + 2 do checksum
-        return convert_dec_to_hex(length, octet=2 )
+        return convert_dec_to_hex(length, oct=4 ) + " "
 
     def checksum(self):
         hexcodes = self.tlv()
         
     def teds_format(self):
-        self.tlv()
+        return self.length() + self.tlv() 
         
