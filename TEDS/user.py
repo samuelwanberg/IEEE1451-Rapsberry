@@ -68,6 +68,7 @@ class UserTransducerNameTeds:
         return convert_dec_to_hex(length, oct=4 ) + " "
 
     def checksum(self):
+        #teste
         hexcodes = self.tlv()
         
     def teds_format(self):
