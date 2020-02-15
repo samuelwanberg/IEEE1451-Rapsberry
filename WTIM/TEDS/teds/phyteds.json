@@ -1,0 +1,97 @@
+{
+  "Length": "00 00 00 4F",
+  "Header": {
+    "Type": "03",
+    "Length": "04",
+    "Family": "00",
+    "Class": "0D",
+    "Version": "01",
+    "TupleLength": "01"
+  },
+  "Radio": {
+    "Type": "0A",
+    "Length": "01",
+    "Value": "01"
+  },
+  "MaxBPS": {
+    "Type": "0B",
+    "Length": "04",
+    "Value": "00 00 00 FA"
+  },
+  "MaxCDev": {
+    "Type": "0C",
+    "Length": "02",
+    "Value": "00 01"
+  },
+  "MaxRDev": {
+    "Type": "0D",
+    "Length": "02",
+    "Value": "00 01"
+  },
+  "Ecrypt": {
+    "Type": "0E",
+    "Length": "02",
+    "Value": "00 00"
+  },
+  "Authent": {
+    "Type": "0F",
+    "Length": "01",
+    "Value": "00"
+  },
+  "MaxSDU": {
+    "Type": "12",
+    "Length": "02",
+    "Value": "00 FF"
+  },
+  "MinALat": {
+    "Type": "13",
+    "Length": "04",
+    "Value": "00 00 04 00"
+  },
+  "MinTLat": {
+    "Type": "14",
+    "Length": "04",
+    "Value": "00 00 04 00"
+  },
+  "MaxXact": {
+    "Type": "15",
+    "Length": "01",
+    "Value": "01"
+  },
+  "Baterry": {
+    "Type": "16",
+    "Length": "01",
+    "Value": "00"
+  },
+  "Version": {
+    "Type": "17",
+    "Length": "02",
+    "Value": "00 00"
+  },
+  "MaxRetry": {
+    "Type": "18",
+    "Length": "02",
+    "Value": "00 00 "
+  },
+  "Phy_Ch": {
+    "Type": "40",
+    "Length": "02",
+    "Value": "00 0B"
+  },
+  "Phy_ch_w": {
+    "Type": "41",
+    "Length": "02",
+    "Value": "09 B0"
+  },
+  "phyFreq": {
+    "Type": "43",
+    "Length": "02",
+    "Value": "09 B0"
+  },
+  "RangeMax": {
+    "Type": "44",
+    "Length": "02",
+    "Value": "05 7C"
+  },
+  "Checksum": "69 0D"
+}

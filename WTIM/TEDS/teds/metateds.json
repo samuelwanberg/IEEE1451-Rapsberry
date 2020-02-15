@@ -1,0 +1,45 @@
+{
+   "Length": "00 00 00 2A",
+
+   "Header": {
+      "Type": "03",
+      "Length": "04",
+      "Family": "00",
+      "Class": "01",
+      "Version": "01",
+      "TupleLength": "01"
+   },
+
+   "UUID": {
+      "Type": "04",
+      "Length": "0A",
+      "Value": "93 CC 20 1A F4 C1 F7  44 2A CC"
+   },
+
+   "OHoldOff": {
+      "Type": "0A",
+      "Length": "04",
+      "Value": "3F 80 00 00"
+   },
+
+   "SHoldOff": {
+      "Type": "0B",
+      "Length": "04",
+      "Value": "3F 80 00 00"
+   },
+
+   "TesTime": {
+      "Type": "0C",
+      "Length": "04",
+      "Value": "3F 80 00 00"
+   },
+
+   "MaxChannel": {
+      "Type": "0D",
+      "Length": "02",
+      "Value": "00 07"
+   },
+
+  "Checksum": "F7 B9"
+
+}

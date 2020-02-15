@@ -1,0 +1,82 @@
+{ 
+   "Length":"04 00 00 00 53",
+   "Checksum":"10 4E",
+   "Header":{ 
+      "Type":"03",
+      "Length":"04",
+      "Family":"00",
+      "Class":"03",
+      "Version":"01",
+      "TupleLength":"01"
+   },
+   "CalKey":{ 
+      "Type":"0A",
+      "Length":"01",
+      "Value":"00"
+   },
+   "ChanType":{ 
+      "Type":"0B",
+      "Length":"01",
+      "Value":"00"
+   },
+   "LowLimit":{ 
+      "Type":"0D",
+      "Length":"04",
+      "Value":"00 00 00 00"
+   },
+   "Hilimit":{ 
+      "Type":"0E",
+      "Length":"04",
+      "Value":"42 5C 00 00"
+   },
+   "OError":{ 
+      "Type":"0F",
+      "Length":"04",
+      "Value":"3F 00 00 00"
+   },
+   "SelfTest":{ 
+      "Type":"10",
+      "Length":"01",
+      "Value":"01"
+   },
+   "Sample":{ 
+      "Type":"12",
+      "Length":"09",
+      "Value":"28 01 00 29 01 01 30 01 08"
+   },
+   "UpdateT":{ 
+      "Type":"14",
+      "Length":"04",
+      "Value":"3D CC CC CD"
+   },
+   "RSetupT":{ 
+      "Type":"16",
+      "Length":"04",
+      "Value":"37 D1 B7 17"
+   },
+   "SPeriod":{ 
+      "Type":"17",
+      "Length":"04",
+      "Value":"3D CC CC CD"
+   },
+   "WarmUpT":{ 
+      "Type":"18",
+      "Length":"04",
+      "Value":"41 F0 00 00"
+   },
+   "RDelayT":{ 
+      "Type":"19",
+      "Length":"04",
+      "Value":"37 D1 B7 17"
+   },
+   "DataXmit":{ 
+      "Type":"20",
+      "Length":"04",
+      "Value":"41 F0 00 00"
+   },
+   "Sampling":{ 
+      "Type":"1F",
+      "Length":"04",
+      "Value":"31 01 02 02"
+   }
+}

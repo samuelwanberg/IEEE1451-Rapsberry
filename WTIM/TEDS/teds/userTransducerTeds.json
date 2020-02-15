@@ -1,0 +1,22 @@
+{
+  "Length": "00 00 13 03",
+  "Header": {
+    "Type": "03",
+    "Length": "04",
+    "Family": "00",
+    "Class": "0C",
+    "Version": "01",
+    "TupleLength": "01"
+  },
+  "Format": {
+    "Type": "04",
+    "Length": "01",
+    "Value": "00"
+  },
+  "TCName": {
+    "Type": "41",
+    "Length": "43",
+    "Value": "4D 45 2D 31 30 30"
+  },
+  "Checksum": "FD FE"
+}
