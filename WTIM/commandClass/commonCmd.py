@@ -1,5 +1,5 @@
 from message import Reply
-from ieee1451-0 import UserTransducerNameTedsReads, MetaTedsReads, TransducerChannelTedsReads, PhyTedsReads
+from TEDS.ieee1451-0 import UserTransducerNameTedsReads, MetaTedsReads, TransducerChannelTedsReads, PhyTedsReads
 '''
 Commands common to the TIM and TransducerChannel
 
@@ -7,13 +7,13 @@ commandClass = {
     1 : "QueryTEDS",
     2 : "ReadTEDSSegment"
 }
+'''
 
 class QueryTEDS:
 
     def __init__(self):
         pass
 
-'''
 
 class ReadTEDSSegment(Reply):
     

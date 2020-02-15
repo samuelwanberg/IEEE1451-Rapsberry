@@ -1,5 +1,4 @@
 
-
 class Reply:
     
     def flag(self):
