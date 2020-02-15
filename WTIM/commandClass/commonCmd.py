@@ -1,17 +1,20 @@
 from message import Reply
 from ieee1451-0 import UserTransducerNameTedsReads, MetaTedsReads, TransducerChannelTedsReads, PhyTedsReads
-
 '''
 Commands common to the TIM and TransducerChannel
+
 commandClass = {
     1 : "QueryTEDS",
     2 : "ReadTEDSSegment"
 }
+
 class QueryTEDS:
 
     def __init__(self):
         pass
+
 '''
+
 class ReadTEDSSegment(Reply):
     
     all_teds = {
@@ -22,21 +25,43 @@ class ReadTEDSSegment(Reply):
     }
     
     def __init__(self, code=0):
-        self.TEDSAccessCode = code 
         
-    def _message(self):
+        self.TEDSAccessCode = code
+        self.Success = "0001"
+        self.Fail = "0000"
         
         try:
-            flag= "01"
-            teds = (self.all_teds[self.TEDSAccessCode])()           
-            format = teds.hex_format()
-            length = len(format).to_bytes(byteorder='big', / 
-                                          length=2).hex()
-            
-            self.message = flag + length + format 
-
+            self.sucess()
+            teds = self.all_teds[self.TEDSAccessCode]()
+            self.body = teds.hex_format()
         except KeyError:
-            flag = "00"
+            '''
+                 TEDS code Error
+            '''
+            self.fail()
+
+    def sucess(self):
+        self._flag = self.Success 
+        
+    def fail(self):
+        self._flag = self.Fail
+        
+    def flag(self):
+        return self._flag
     
-    def err_message(self):
-        self.message
+    def length(self):
+        
+        if self.flag() != "0000":
+            _length = len(self.body)
+        
+            return _length.to_bytes(byteorder='big',
+                                    length=4).hex()
+        else:
+            return "00000000"
+
+    def reply_dependent(self):
+        
+        if self.flag() != "0000":
+            return self.body
+        else:
+            return "00000000"

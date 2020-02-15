@@ -1,21 +1,17 @@
+
+
 class Reply:
     
-    def __init__(self, ):
-        self.message = []
-    
     def flag(self):
-        pass
+        raise Exception("Flag is Empty and not Implement")
 
     def length(self):
-        pass
+        raise Exception("length is Empty and not Implement")
         
-    def replymessage(self):
-        pass
-
-    def error(self):
-        pass
+    def reply_dependent(self):
+        raise Exception("reply_dependent is Empty and not implement")
 
     def byteMesg(self):
         return bytes.fromhex(self.flag() + /
                              self.length() + / 
-                             self.replymessage())
+                             self.reply_dependent()
