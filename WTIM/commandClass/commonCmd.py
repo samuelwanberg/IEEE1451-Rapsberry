@@ -1,5 +1,6 @@
 from message import Reply
-from TEDS.ieee1451-0 import UserTransducerNameTedsReads, MetaTedsReads, TransducerChannelTedsReads, PhyTedsReads
+from TEDS.utility import convert_hex_to_decimal as hex_to_dec
+from TEDS.ieee1451-0 import UserTransducerNameTedsReads, MetaTedsReads, TransducerChannelTedsReads, PhyTedsReads, 
 '''
 Commands common to the TIM and TransducerChannel
 
@@ -24,9 +25,9 @@ class ReadTEDSSegment(Reply):
         13: PhyTedsReads
     }
     
-    def __init__(self, code=0):
+    def __init__(self, msg):
         
-        self.TEDSAccessCode = code
+        self.TEDSAccessCode = hex_to_dec(msg['code'])
         self.Success = "0001"
         self.Fail = "0000"
         

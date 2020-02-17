@@ -13,4 +13,4 @@ class Reply:
     def byteMesg(self):
         return bytes.fromhex(self.flag() + /
                              self.length() + / 
-                             self.reply_dependent()
+                             self.reply_dependent())
