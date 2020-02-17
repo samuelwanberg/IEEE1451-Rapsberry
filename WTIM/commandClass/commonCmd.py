@@ -26,20 +26,24 @@ class ReadTEDSSegment(Reply):
     }
     
     def __init__(self, msg):
-        
-        try:
-            self.TEDSAccessCode = hex_to_dec(msg['code'])
-            self.Success = "0001"
-            self.Fail = "0000"
+            self.msg = msg
+            self.Success = "01"
+            self.Fail = "00"
             self.sucess()
-            teds = self.all_teds[self.TEDSAccessCode]()
-            self.body = teds.hex_format()
+            self.body()
+
+    def body(self):
+        try:
+            code = self.msg['code']
+            tedsAcessCode = int.from_bytes(code, 'big')
+            teds = self.all_teds[tedsAcessCode]()
+            return teds.hex_format()
         except KeyError:
             '''
-                 TEDS code Error
+              TEDS code Error
             '''
             self.fail()
-
+        
     def sucess(self):
         self._flag = self.Success 
         
@@ -51,17 +55,16 @@ class ReadTEDSSegment(Reply):
     
     def length(self):
         
-        if self.flag() != "0000":
+        if self.flag() != "00":
             _length = len(self.body)
         
             return _length.to_bytes(byteorder='big',
                                     length=4).hex()
         else:
-            return "00000000"
+            return "0000"
 
     def reply_dependent(self):
-        
-        if self.flag() != "0000":
-            return self.body
+        if self.flag() != "00":
+            return self.body()
         else:
-            return "00000000"
+            return "0000"

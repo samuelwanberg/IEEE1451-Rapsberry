@@ -1,10 +1,8 @@
 from zigbee.zigConnect import xBeeConnect
 from commonCmd import QueryTEDS, ReadTEDSSegment
 
-
 def make_error():
-   return bytes.fromhex("00" *8)
-    
+   return bytes.fromhex("00" * 8)
     
 def parse_msg(msg):
     
@@ -22,14 +20,12 @@ def parse_msg(msg):
         'code' : hex_code
     }
 
-
 def commonCMD_functions():
     
     return = {
         1: QueryTEDS,
         2: ReadTEDSSegment,
     }
-
 
 def XdcrOperate_functions():
 
@@ -52,7 +48,6 @@ def parse_msg(msg):
         'length': length,
         'code' : hex_code
     }
-
 
 def callback(xbee_msg):
     
