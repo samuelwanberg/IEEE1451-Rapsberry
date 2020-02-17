@@ -27,11 +27,10 @@ class ReadTEDSSegment(Reply):
     
     def __init__(self, msg):
         
-        self.TEDSAccessCode = hex_to_dec(msg['code'])
-        self.Success = "0001"
-        self.Fail = "0000"
-        
         try:
+            self.TEDSAccessCode = hex_to_dec(msg['code'])
+            self.Success = "0001"
+            self.Fail = "0000"
             self.sucess()
             teds = self.all_teds[self.TEDSAccessCode]()
             self.body = teds.hex_format()

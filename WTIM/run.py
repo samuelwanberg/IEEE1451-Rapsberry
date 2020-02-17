@@ -3,7 +3,7 @@ from commonCmd import QueryTEDS, ReadTEDSSegment
 
 
 def make_error():
-   pass 
+   return bytes.fromhex("00" *8)
     
     
 def parse_msg(msg):
