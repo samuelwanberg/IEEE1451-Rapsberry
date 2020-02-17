@@ -21,19 +21,39 @@ def callback(xbee_msg):
     data_recv = xbee_msg
     msg = parse_msg(data_recv)
     
-    class_command = {
-        1 : 
-        2 :
-        3 :
-
+    commonCMD_functions = {
+        1: "QueryTEDS",
+        2: "ReadTEDSSegment",
+    }
+    
+    XdcrOperate_functions = {
     }
 
-    
-    
+    class_command = {
+        1 : commonCMD_functions,
+        3 : 'XdcrOperate'
+    }
+
+    try:
+        channel = msg['channel'] 
+        cmd = msg['commandClass']
+        function = msg['commandFunction']
+        length = msg['length']
+        code  = msg(code)    
         
+        command = class_command[cmd]
+        response = command[function](code)
+        
+    except KeyError:
+        '''
+           response error format
+        '''
+        respose = make_error()
+        
+    return response 
+
 if __name__ == '__main__':
     
     xbee = xBeeConnect()
     xbee.connect()
     xbee.get(callback)
-    
