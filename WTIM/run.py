@@ -52,16 +52,19 @@ def parse_msg(msg):
 def callback(xbee_msg):
     
     msg = parse_msg(xbee_msg)
-        
+       
     class_command = {
         1 : commonCMD_functions(),
         3 : XdcrOperate_functions()
     }
 
     try:
-        command = class_command[cmd]
-        response = command[function](msg).byteMesg()
-        
+       cmd = msg['commandClass']
+       function = msg['commandFunction']
+       response = class_command[cmd] /
+                               [function] /
+                               (msg) /
+                               .byteMesg()
     except KeyError:
         '''
            response error format

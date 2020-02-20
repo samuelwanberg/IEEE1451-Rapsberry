@@ -14,3 +14,6 @@ class Reply:
         return bytes.fromhex(self.flag() + /
                              self.length() + / 
                              self.reply_dependent())
+
+
+
