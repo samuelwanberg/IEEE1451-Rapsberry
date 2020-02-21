@@ -42,7 +42,24 @@ class MetaTEDS(TEDS):
 
     def TestTime(self, code):
         '''Float32 4 '''
-    
+        return {
+            'TestTime': hex2float(code)
+        }
+
     def MaxChan(self, code):
         '''Uint16 1 '''
         return {'MaxChan' : hex2dec(code) }
+    
+    def pipeline(self):
+        
+        stages = {
+        'UUID': self.UUID,
+        'OHoldOff': self.OHoldOff,
+        'TestTime': self.TestTime,
+        'MaxChan': self.MaxChan
+        }
+        
+        blockcode = [self.blockcode()[i:i+2] 
+                     for i in range(0, len(self.blockcode()), 2)]
+        
+        

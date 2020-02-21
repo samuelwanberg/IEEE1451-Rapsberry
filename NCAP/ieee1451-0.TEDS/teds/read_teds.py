@@ -1,8 +1,17 @@
+from utils import hex2dec
+
 
 class TEDS:
 
-    def __init__(self,teds):
-        self.teds = teds
+    def __init__(self,name,teds):
+        self.name = name
+        self.teds = self.verify(teds)
+    
+    def verify(self, teds):
+        teds = teds.strip()
+        teds = teds.replace(' ','')
+        
+        return teds
          
     def length(self):
         
@@ -11,117 +20,51 @@ class TEDS:
             return int( _length, 16) 
         
         except IndexError as error:
+            print(error)
             
     def header(self): 
         
         try:
             header =  self.teds[8:18] 
         except IndexError as error:
+            print(error)
+    
+    def blockcode(self):
+        
+        try:
+            #Conteudo entre o Header e o Checksum
+            return self.teds[18:-4] 
+        except IndexError as error:
+            print(f"Error blockcode {self.name} TEDS Size: {error}")
 
     def checksum(self):
         try:
             header =  self.teds[-4] 
         except IndexError as error:
+            print(f"Checksum {self.name} TEDS size Error {error}")
 
+    def pipeline(self):
+        
+        #Reorganizando o arquivo para formar pares de octetos
+        # Por exemplo [00aabbcc] -> [00, aa, bb, cc]
+        blockcode = [self.blockcode()[i:i+2] 
+                     for i in range(0, len(self.blockcode()), 2)]
+        
+        result = {}
 
+        while len(blockcode) > 0:
+            try:
+                type = blockcode.pop()
+                key, function = self.stages[type]
 
+                length = hex2dec( blockcode.pop() )
 
-class TransducerChannelTeds(TEDS):
-    
-    def __init__():
+                value = blockcode[:length]
+                result[key] = function(value)
 
-    def CalKey(self, code): 
-        return "0A", 
+                #increments
+                blockcode = blockcode[length:]
+            except (KeyError, IndexError) as error:
+                print(f"Error to Construct {self.name} BlockCode: {error}")
 
-    def ChanType(self, code): 
-        return "0B" 
- 	    
-    def LowLimit(self, code): 
-        return "0D",
- 	    
-    def Hilimit(self, code): 
-        reutrn "0E"
- 	    
-    def OError(self. code): 
-        return "0F"
- 	    
-    def SelfTest(self, code): 
-        return "10"
- 	    
-    def Sample(self, code): 
-        return "12"
- 	    
-    def UpdateT(self, code): 
-        return "14"
- 	    
-    def RSetupT(self, code): 
-        return "16"
- 	    
-    def SPeriod(self, code): 
-        return "17"
-    
-    def WarmUpT(self, code): 
-        return "18" 
- 	    
-    def RDelayT(self, code): 
-        return "19"
- 	    
-    def DataXmit(self, code): 
-        return "20"
- 	    
-    def Sampling(self, codey): 
-        return "1F"
-
-
-class PhyTEDS(TEDS):
-
-    def Radio(self): 
-        return "0A"
-    
-    def MaxBPS(self): 
-        return "0B"
- 
-    def MaxCDev(self): 
-        return "0C"
-    
-    def MaxRDev(self): 
-        return "0D"
- 
-    def Ecrypt(self): 
-        return "0E"
-
-    def Authent(self): 
-        return "0F"
- 
-    def MaxSDU(self): 
-        return "12"
-
-    def MinALat(self): 
-        return "13"
- 
-    def MinTLat(self): 
-        return "14"
- 
-    def MaxXact(self): 
-        return "15" 
-    
-    def Baterry(self): 
-        return "16" 
-    
-    def Version(self): 
-        return "17" 
-    
-    def MaxRetry(self): 
-        return "18" 
-
-    def Phy_Ch(self): 
-        return "40"
-
-    def Phy_ch_w(self): 
-        return "41", 
-
-    def phyFreq(self): 
-        return "43", 
-
-    def RangeMax(self): 
-        return "44"        
+        return result 
