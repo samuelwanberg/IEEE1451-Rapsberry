@@ -66,5 +66,7 @@ class MetaTEDS(TEDS):
 
     def MaxChan(self, code):
         '''Uint16 1 '''
-        return {'MaxChan' : hex2dec(code) }
+        return { 
+            'MaxChan' : hex2dec(code) 
+        }
             

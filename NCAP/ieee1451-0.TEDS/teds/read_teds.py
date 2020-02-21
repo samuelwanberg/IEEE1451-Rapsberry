@@ -17,7 +17,10 @@ class TEDS:
         
         try:
             _length =  self.teds[:8]
-            return int( _length, 16) 
+            _length =  int( _length, 16)
+            
+            return _length 
+        
         
         except IndexError as error:
             print(error)
