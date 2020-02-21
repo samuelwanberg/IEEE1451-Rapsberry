@@ -57,7 +57,7 @@ class TEDS:
             try:
                 type = blockcode.pop()
                 key, function = self.stages[type]
-            except KeyError as err:
+            except KeyError as error:
                 print(f"Error BlockCode TEDS invalid ID: {error}")
 
             length = hex2dec( blockcode.pop() )

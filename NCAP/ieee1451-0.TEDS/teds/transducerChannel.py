@@ -70,25 +70,28 @@ class TransducerChannelTeds(TEDS):
     
     def SPeriod(self, code): 
         return {
-            "RSetupT" : hex2float(code)
+            "SPeriod" : hex2float(code)
         }
 
     def WarmUpT(self, code): 
         return {
-            "RSetupT" : hex2float(code)
+            "WarmUpT" : hex2float(code)
         }
  	    
     def RDelayT(self, code): 
         return {
-            "RSetupT" : hex2float(code)
+            "RDelayT" : hex2float(code)
         }
  	    
     def DataXmit(self, code): 
         return {
-            "RSetupT" : hex2float(code)
+            "DataXmit" : hex2float(code)
         }
  	    
-    def Sampling(self, codey): 
+    def Sampling(self, codey):
+        '''
+    Duvidas 
+        '''
         return {
-            "RSetupT" : hex2float(code)
+            "Sampling" : hex2float(code)
         }
