@@ -6,6 +6,19 @@ class MetaTEDS(TEDS):
     
     def __init__(self,teds):
         self.teds = teds
+        self.name = "MetaTeds"
+        
+        super().__init__(self.name, self.teds)
+
+
+        self.stages = {
+            '04': ('UUID',self.UUID),
+            '0A': ('OHoldOff', self.OHoldOff),
+            '0B': ('SHoldOff', self.SHoldOff),
+            '0C': ('TestTime',self.TestTime),
+            '0D': ('MaxChan',self.MaxChan)
+        }
+
         
     def UUID(self, code):
 
@@ -31,15 +44,20 @@ class MetaTEDS(TEDS):
                 'Date' :  Date,
             }
             
-        except IndexError:
-            raise ("UUID Error in MetaTEDS")
+        except IndexError as err:
+             print(f"UUID Error in MetaTEDS {err}")
         
 
     def OHoldOff(self, code):
         return {
             'OHoldOff': hex2float(code)
         }
-
+    
+    def SHoldOff(self, code):
+        return {
+            'SHoldOff': hex2float(code)
+        }
+    
     def TestTime(self, code):
         '''Float32 4 '''
         return {
@@ -49,17 +67,4 @@ class MetaTEDS(TEDS):
     def MaxChan(self, code):
         '''Uint16 1 '''
         return {'MaxChan' : hex2dec(code) }
-    
-    def pipeline(self):
-        
-        stages = {
-        'UUID': self.UUID,
-        'OHoldOff': self.OHoldOff,
-        'TestTime': self.TestTime,
-        'MaxChan': self.MaxChan
-        }
-        
-        blockcode = [self.blockcode()[i:i+2] 
-                     for i in range(0, len(self.blockcode()), 2)]
-        
-        
+            

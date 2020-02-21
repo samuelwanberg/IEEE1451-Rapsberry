@@ -1,46 +1,94 @@
+from utils import hex2dec, bin2dec, hex2float
 
 class TransducerChannelTeds(TEDS):
     
-    def __init__():
+    def __init__(self):
+        
+        self.stages  = {
+ 	    "0A": ("CalKey", self.CalKey ), 
+ 	    "0B": ("ChanType", self.ChanType ), 
+ 	    "0D": ("LowLimit", self.LowLimit ),
+ 	    "0E": ("Hilimit", self.Hilimit ),
+ 	    "0F": ("OError", self.OError ),
+ 	    "10": ("SelfTest", self.SelfTest ),
+ 	    "12": ("Sample", self.Sample ),
+ 	    "14": ("UpdateT", self.UpdateT ),
+ 	    "16": ("RSetupT", self.RSetupT ),
+ 	    "17": ("SPeriod", self.SPeriod ),
+ 	    "18": ("WarmUpT", self.WarmUpT ), 
+ 	    "19": ("RDelayT", self.RDelayT ),
+ 	    "20": ("DataXmit", self.DataXmit ),
+ 	    "1F": ("Sampling", self.Sampling ) 
+        } 
+
 
     def CalKey(self, code): 
-        return "0A", 
+        return {
+            'Calkey': hex2dec(code)  
+            }
 
     def ChanType(self, code): 
-        return "0B" 
+        return { 
+            'ChanType' : hex2dec(code) 
+        }
  	    
     def LowLimit(self, code): 
-        return "0D",
+        return {
+            "LowLimit" : hex2float(code)
+        }
  	    
     def Hilimit(self, code): 
-        reutrn "0E"
+        return {
+            "Hilimit" : hex2float(code)
+        }
  	    
     def OError(self. code): 
-        return "0F"
+        return {
+            "OError" : hex2float(code)
+        }
  	    
     def SelfTest(self, code): 
-        return "10"
- 	    
+        return {
+            "SelfTEst" : hex2dec(code)
+        }
+ 	
     def Sample(self, code): 
-        return "12"
+        '''Duvidas  '''
+        return {
+            "Sample" : hex2float(code)
+        }
  	    
     def UpdateT(self, code): 
-        return "14"
+        return {
+            "UpdateT" : hex2float(code)
+        }
  	    
     def RSetupT(self, code): 
-        return "16"
- 	    
-    def SPeriod(self, code): 
-        return "17"
+        return {
+            "RSetupT" : hex2float(code)
+        }
     
+    def SPeriod(self, code): 
+        return {
+            "RSetupT" : hex2float(code)
+        }
+
     def WarmUpT(self, code): 
-        return "18" 
+        return {
+            "RSetupT" : hex2float(code)
+        }
  	    
     def RDelayT(self, code): 
-        return "19"
+        return {
+            "RSetupT" : hex2float(code)
+        }
  	    
     def DataXmit(self, code): 
-        return "20"
+        return {
+            "RSetupT" : hex2float(code)
+        }
  	    
     def Sampling(self, codey): 
-        return "1F"
+        return {
+            "RSetupT" : hex2float(code)
+        }

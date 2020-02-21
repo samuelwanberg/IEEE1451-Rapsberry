@@ -53,18 +53,22 @@ class TEDS:
         result = {}
 
         while len(blockcode) > 0:
+            
             try:
                 type = blockcode.pop()
                 key, function = self.stages[type]
+            except KeyError as err:
+                print(f"Error BlockCode TEDS invalid ID: {error}")
 
-                length = hex2dec( blockcode.pop() )
-
+            length = hex2dec( blockcode.pop() )
+            
+            try:
                 value = blockcode[:length]
-                result[key] = function(value)
+                result.update( function(value) )
 
                 #increments
                 blockcode = blockcode[length:]
             except (KeyError, IndexError) as error:
-                print(f"Error to Construct {self.name} BlockCode: {error}")
+                print(f"Error to Construct {self.name} type {key} BlockCode: {error}")
 
         return result 
