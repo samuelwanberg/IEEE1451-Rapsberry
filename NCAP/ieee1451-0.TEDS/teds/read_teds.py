@@ -19,6 +19,9 @@ class TEDS:
             _length =  self.teds[:8]
             _length =  int( _length, 16)
             
+            if not _length == len(self.teds[8:]) / 2:
+                raise Exception(f"Octetos Length  Invalid for {self.name}")
+ 
             return _length 
         
         
