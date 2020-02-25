@@ -23,7 +23,7 @@ class MessageStructure:
     def commandFunction(self):
         return self.vect[3]
 
-    def _length(self):
+    def length(self):
         return self.vect[4:6]
 
     def commandDependent(self):
