@@ -110,8 +110,6 @@ def callback_device_discovered(remote):
     print(MAC)
     #print(f"${MCA} -> ${MAC1} -> ${MACST}")
 
-    
-            
 class ConnectZigBee:
 
 
@@ -126,7 +124,7 @@ class ConnectZigBee:
         except Exception:
             print('Erro de conexão zigbee')
         
-    def Dicovery_node():
+    def Dicovery_node(self):
 
         try:
             self.device.open()
@@ -146,6 +144,5 @@ class ConnectZigBee:
         finally:
             if device is not None and device.is_open():
                 device.close()
-        
-        device.close()
-
+                
+                
