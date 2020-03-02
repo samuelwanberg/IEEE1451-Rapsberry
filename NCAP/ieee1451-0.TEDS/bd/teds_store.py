@@ -8,5 +8,18 @@ class Store:
         self.teds = teds
         self.bd = 1
 
+        all_teds = [
+            'METATEDS',
+            'CHANNEL'
+            'PHYTEDS',
+            'USERNAMETEDS',
+            ]
+
     def json_validate(self):
         
+
+    def connect(self):
+        redis = ConnectRedis()
+        
+        if not redis.test():
+            

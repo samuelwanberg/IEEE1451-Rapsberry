@@ -76,5 +76,7 @@ class TEDS:
                 blockcode = blockcode[length:]
             except (KeyError, IndexError) as error:
                 print(f"Error to Construct {self.name} type {key} BlockCode: {error}")
+        
+        result['Name'] = self.name
 
         return result 

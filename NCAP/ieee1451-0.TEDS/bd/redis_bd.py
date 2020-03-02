@@ -20,14 +20,13 @@ class ConnectRedis(BD):
 
         super().__init__(port=port, db=self.db)
 
-        
     def autheticate(self):
         pass
 
     def test(self):
         return self.ping()
 
-    def push(self, json):
+    def push(self,wtim, json):
         
         with self.pipeline() as pipe:
             pipe.multi()
