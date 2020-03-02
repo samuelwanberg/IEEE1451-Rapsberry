@@ -100,9 +100,11 @@ def callback_discovery_finished(status):
 '''
 
 def callback_device_discovered(remote):
-    MAC , host = str(remote).strip().split('-')
-    print(MAC)
-    print(host)
+    
+    MAC, host = str(remote).strip().split('-')
+    
+    #verify with zigbee is database 
+    
 
 class ConnectZigBee:
 
@@ -118,7 +120,7 @@ class ConnectZigBee:
         except Exception:
             print('Erro de conexão zigbee')
         
-    def Dicovery_node(self):
+    def dicovery_node(self):
 
         try:
             self.device.open()
@@ -140,3 +142,8 @@ class ConnectZigBee:
                 self.device.close()
                 
                 
+    def send_command_env_rec(self):
+        pass
+
+    def send_command(self):
+        pass

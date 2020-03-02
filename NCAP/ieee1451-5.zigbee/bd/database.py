@@ -1,25 +1,12 @@
-import string
-import pymysql
-import struct
-import time
-import serial
-import binascii
-import pymysql
-import struct
-import codecs
-import smbus
+from sqlalchemy as create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
-class Database:
+try:           
+    engine = create_engine('sqlite:///ieee1451.sqlite')
+    session = sessionmaker(bind=engine) 
+    Base = declarative_base
 
-    def __init__(self):
-        try:
-            # Abrimos uma conexão com o banco de dados:
-            self.conexao = pymysql.connect(db='NCAPBD', user='root', passwd='ncapstim')
-            # Cria um cursor:
-            self.cursor = self.conexao.cursor()
-	except Exception:   
-            raise Exception("Erro ao conectar ao banco de dados!!!\n")
-        
-    
-    
-        
+except Exception:
+    print("Error connect Database")
+
