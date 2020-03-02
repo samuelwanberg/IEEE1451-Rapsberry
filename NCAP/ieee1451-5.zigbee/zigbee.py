@@ -100,14 +100,9 @@ def callback_discovery_finished(status):
 '''
 
 def callback_device_discovered(remote):
-    print(remote)
-    MAC=str(remote)
-    MAC1=MAC.split(' -')
-    MAC=str(MAC1[:1])
-    MACS=str(MAC[2:18])
-    MACST=""+MACS
+    MAC , host = str(remote).strip().split('-')
     print(MAC)
-    #print(f"${MCA} -> ${MAC1} -> ${MACST}")
+    print(host)
 
 class ConnectZigBee:
 
