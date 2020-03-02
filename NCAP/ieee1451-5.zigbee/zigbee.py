@@ -142,7 +142,7 @@ class ConnectZigBee:
                 time.sleep(0.1)
 
         finally:
-            if device is not None and device.is_open():
-                device.close()
+            if self.device is not None and self.device.is_open():
+                self.device.close()
                 
                 
