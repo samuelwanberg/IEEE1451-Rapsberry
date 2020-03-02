@@ -100,8 +100,7 @@ def callback_discovery_finished(status):
 '''
 
 def callback_device_discovered(remote):
-    
-    print("Device discovered: %s" %remote)
+    print(remote)
     MAC=str(remote)
     MAC1=MAC.split(' -')
     MAC=str(MAC1[:1])
@@ -139,7 +138,7 @@ class ConnectZigBee:
             print("Discovering remote XBee devices...")
         
             while xbee_network.is_discovery_running():
-                #time.sleep(0.1)
+                time.sleep(0.1)
 
         finally:
             if self.device is not None and self.device.is_open():
