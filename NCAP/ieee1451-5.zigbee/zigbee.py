@@ -107,8 +107,8 @@ def callback_device_discovered(remote):
     MAC=str(MAC1[:1])
     MACS=str(MAC[2:18])
     MACST=""+MACS
-
-    print(f"${MCA} -> ${MAC1} -> ${MACST}")
+    print(MAC)
+    #print(f"${MCA} -> ${MAC1} -> ${MACST}")
 
     
             

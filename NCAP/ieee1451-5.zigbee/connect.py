@@ -5,8 +5,6 @@ BAUD_RATE = 9600
 
 timeout = 0.5
 
-
-
 def Dicovery_node():
 
     device = XBeeDevice(PORT, BAUD_RATE)
