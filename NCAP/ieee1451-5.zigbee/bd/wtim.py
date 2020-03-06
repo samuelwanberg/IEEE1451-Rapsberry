@@ -1,34 +1,30 @@
-from sqlalchemy import Column, String, Integer, Data, Table, Foreignkey 
+from sqlalchemy import Column, String, Integer, Date, Table 
 from database import Base
 
-class Wtim(Base):
+class WTimZigbee(Base):
+
+    '''
+         Espera-se para este contexto, que sejam armazenadas 
+         informação de para cada módulo do zigbee
+         uma informação de endereço mac e possivel 
+         um nome que possa indetificar um componente 
+         físico  além do periodo de inxerção
+    '''
     
     __tablename__ = 'wtim'
     
-    id = Column(Interger, primary_key=True)
+    id = Column(Integer, primary_key=True)
+    mac = Column(String)
     name = Column(String)
     relasea_date = Column(Date)
 
-    def __init__(self, name, release_date):
+    def __init__(self, name, mac,  release_date):
         self.name = name
-        self.release_date = release_date
-
-
-class Zigbee(Base):
-
-    __tablename__ = 'mac'
-
-    id = Column(Interger, primary_key=True)
-    mac = Column(String)
-    relasea_date = Column(Date)
-
-    def __init__(self, mac, release_date):
         self.mac = mac
         self.release_date = release_date
 
     
 wtim_zigbee_association = Table(
     'wtim_zigbee', Base.metadata,
-    Column('wtim_id', Integer, Foreignkey('wtim.id')),
-    Column('zigbee_id', Integer, Foreignkey('mac.id'))
+    Column('wtim_id', Integer, ForeignKey('wtim.id'))
 )

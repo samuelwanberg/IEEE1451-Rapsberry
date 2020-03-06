@@ -1,0 +1,5 @@
+Click==7.0
+redis==3.3.11
+rq==1.2.0
+SQLAlchemy==1.3.13
+sqlit==0.1.6
