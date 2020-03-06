@@ -13,7 +13,7 @@ class WTimZigbee(Base):
     
     __tablename__ = 'wtim'
     
-    id = Column(Integer, primary_key=True)
+    timId = Column(Integer, primary_key=True)
     mac = Column(String)
     name = Column(String)
     relasea_date = Column(Date)
@@ -24,6 +24,7 @@ class WTimZigbee(Base):
         self.release_date = release_date
 
     
+
 wtim_zigbee_association = Table(
     'wtim_zigbee', Base.metadata,
     Column('wtim_id', Integer, ForeignKey('wtim.id'))
