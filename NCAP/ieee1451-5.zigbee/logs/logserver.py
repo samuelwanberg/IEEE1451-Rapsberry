@@ -11,8 +11,13 @@ class wtimManagerLog:
         self.filename = 'conection.log'
         logging.basicConfig(filename=self.filename, filemode='w' ,format='%(asctime)s -> ', level=logging.INFO)
         
-    def error(self, msg):
+    def errormsg(self, msg):
         self.filename = 'conection.log'
         logging.basicConfig(filename=self.filename, filemode='w' ,format='%(asctime)s -> ', level=logging.INFO)
         
+    def ieee14510(self, msg):
+        pass
+
+    def registration(self):
+        pass
     
