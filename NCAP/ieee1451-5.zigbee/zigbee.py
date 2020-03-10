@@ -1,4 +1,3 @@
-
 from digi.xbee.models.status import NetworkDiscoveryStatus
 from digi.xbee.devices import XBeeDevice
 from digi.xbee.devices import XBeeDevice, RemoteXBeeDevice
@@ -8,6 +7,7 @@ from digi.xbee.devices import ZigBeeDevice
 from digi.xbee.models.mode import APIOutputModeBit
 from digi.xbee.util import utils
 from datetime import date, datetime
+from logs.logserver import NcapManagerLog
 
 
 class ConnectZigBee:
@@ -18,12 +18,14 @@ class ConnectZigBee:
         self.timeout = 0.5
         self.connect()
 
+        self.log = NcapManagerLog()
+
     def connect(self):
         try :
             self.device = XBeeDevice(self.PORT, self.BAUD_RATE)
-        except Exception:
-            #Todo error deve ser trabado e registar um logs de erros aplica aqui servidor de logs  
-            print('Error ao Conectar')
+            self.log.conn(self.device)
+        except Exception:  
+            self.log.error(self.device)
         
     def dicovery_node(self,  callback):
 
@@ -34,7 +36,7 @@ class ConnectZigBee:
             xbee_network.clear()
             xbee_network.add_device_discovered_callback(callback)
             xbee_network.start_discovery_process()
-            #aplicar um servidor de logs locais print("Discovering remote XBee devices...")
+            #aplicar um servidor de logs locais print("Discovering remote XBee d
             # ou talvez registar os logs no callback
             while xbee_network.is_discovery_running():
                 time.sleep(0.1)
@@ -66,7 +68,6 @@ class ConnectZigBee:
             error
             
     
-
     def send_command(self,command, mac):
         
         #talvez aqui tenhamos um probelmas a de se conferires

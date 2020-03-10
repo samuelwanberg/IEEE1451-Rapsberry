@@ -1,7 +1,7 @@
 from sqlalchemy import Column, String, Integer, Date, Table 
 from database import Base
 
-class WTimZigbee(Base):
+class InputWTIM(Base):
 
     '''
          Espera-se para este contexto, que sejam armazenadas 
@@ -16,16 +16,22 @@ class WTimZigbee(Base):
     timId = Column(Integer, primary_key=True)
     mac = Column(String)
     name = Column(String)
+    version = Column(String)
+    firmware = Column(String)
+    protocol = Column(String)
     relasea_date = Column(Date)
 
-    def __init__(self, name, mac,  release_date):
-        self.name = name
+    def __init__(self):
+        pass
+
+    def input_new(self,mac,name, version, firmware, protocol):
         self.mac = mac
-        self.release_date = release_date
+        self.name = name
+        self.version = version
+        self.firmware = firmware
+        self.protocol = protocol
+        self.release_date = str( date.today())
+        
+    def query(self):
 
-    
-
-wtim_zigbee_association = Table(
-    'wtim_zigbee', Base.metadata,
-    Column('wtim_id', Integer, ForeignKey('wtim.id'))
-)
+        
