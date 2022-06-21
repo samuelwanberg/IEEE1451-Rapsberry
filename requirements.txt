@@ -1,4 +1,4 @@
-numpy==1.17.3
+numpy==1.22.0
 ply==3.11
 pyasn1==0.4.7
 pycryptodomex==3.9.0
